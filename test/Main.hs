@@ -9,7 +9,7 @@ import           Test.QuickCheck
 import           UnionFind
 
 ufFrom :: [Edge] -> UnionFind
-ufFrom = foldl' (\uf (x, y) -> union x y uf) start
+ufFrom = foldl' (flip union) start
 
 main :: IO ()
 main = hspec $
@@ -25,7 +25,7 @@ propMatchesGraphConnectivity el (NPairs nprs) =
   in
   cover (or joined) 50 "any joined" $
   cover (any not joined) 50 "any not joined" $
-  map (\(x, y) -> find x uf == find y uf) nprs === joined
+  map (`isConnectedIn` uf) nprs === joined
 
 newtype NPairs = NPairs [(Int, Int)]
   deriving (Show)

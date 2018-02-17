@@ -38,8 +38,8 @@ find n uf = case uf ! n of
 captainNode :: CaptainNode -> Node
 captainNode (CaptainNode n _) = n
 
-union :: CaptainNode -> CaptainNode -> UnionFind -> UnionFind
-union (CaptainNode x xr) (CaptainNode y yr) (UnionFind m) = UnionFind $
+union :: (CaptainNode, CaptainNode) -> UnionFind -> UnionFind
+union (CaptainNode x xr, CaptainNode y yr) (UnionFind m) = UnionFind $
   case compare xr yr of
     LT -> Node.insert x (Pointer y) m
     EQ -> Node.insertAll [(x, Pointer y), (y, Captain (yr + 1))] m

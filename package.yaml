@@ -33,7 +33,9 @@ default-extensions:
 
 library:
   source-dirs: src
-  exposed-modules: UnionFind
+  exposed-modules:
+  - UnionFind
+  - UnionFind.Introspect
   ghc-options:
   - -Wall
   - -Werror
@@ -51,4 +53,5 @@ tests:
     dependencies:
     - unionfind
     - hspec
+    - mtl
     - QuickCheck

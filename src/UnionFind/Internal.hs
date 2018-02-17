@@ -1,5 +1,5 @@
 module UnionFind.Internal
-    ( UnionFind
+    ( UnionFind(..)
     , union
     , find
     , start

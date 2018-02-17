@@ -5,13 +5,14 @@ module UnionFind.Single
     , Rank
     , captainNode
     , compress
+    , indirectionDepth
     , find
     , getCompressed
     , start
     , union
     ) where
 
-import           Data.Maybe     (fromMaybe)
+import           Data.Maybe     (fromJust, fromMaybe)
 import           UnionFind.Node (Node, NodeMap)
 import qualified UnionFind.Node as Node
 
@@ -55,3 +56,13 @@ compress (UnionFind m) = res
 
 start :: Compressed
 start = UnionFind Node.empty
+
+indirectionDepth :: UnionFind -> Int
+indirectionDepth (UnionFind m) = maximum $ 0 : Node.elems stepCount
+  where
+    stepCount :: NodeMap Int
+    stepCount = go <$> m
+    go :: Value Node -> Int
+    go = \case
+      Captain{} -> 0
+      Pointer p -> fromJust (Node.lookup p stepCount) + 1

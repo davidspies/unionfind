@@ -1,6 +1,7 @@
 module UnionFind.Node
     ( Node(..)
     , NodeMap
+    , elems
     , empty
     , insert
     , insertAll
@@ -32,3 +33,6 @@ lookup (Node n) (NodeMap m) = IntMap.lookup n m
 
 insertAll :: [(Node, a)] -> NodeMap a -> NodeMap a
 insertAll xs m = foldl' (flip (uncurry insert)) m xs
+
+elems :: NodeMap a -> [a]
+elems (NodeMap m) = IntMap.elems m

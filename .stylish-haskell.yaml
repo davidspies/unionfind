@@ -222,6 +222,7 @@ newline: native
 language_extensions:
   - FlexibleContexts
   - LambdaCase
+  - NamedFieldPuns
   - ScopedTypeVariables
   - TupleSections
   - ViewPatterns

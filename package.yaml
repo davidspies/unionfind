@@ -27,6 +27,7 @@ dependencies:
 default-extensions:
 - DeriveFunctor
 - LambdaCase
+- NamedFieldPuns
 - ScopedTypeVariables
 - TupleSections
 - ViewPatterns

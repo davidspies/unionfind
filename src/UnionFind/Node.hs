@@ -15,9 +15,9 @@ import           Data.List        (foldl')
 import           Prelude          hiding (lookup)
 
 newtype Node = Node Int
-  deriving (Eq)
+  deriving (Eq, Show)
 newtype NodeMap a = NodeMap (IntMap a)
-  deriving (Functor)
+  deriving (Eq, Functor, Show)
 
 unNode :: Node -> Int
 unNode (Node n) = n

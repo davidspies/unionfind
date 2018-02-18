@@ -18,12 +18,13 @@ import qualified UnionFind.Node as Node
 
 type Rank = Int
 data Value v = Pointer !v | Captain !Rank
-  deriving (Functor)
+  deriving (Eq, Functor, Show)
 newtype UnionFind' v = UnionFind (NodeMap (Value v))
-  deriving (Functor)
+  deriving (Eq, Functor, Show)
 type UnionFind = UnionFind' Node
 type Compressed = UnionFind' CaptainNode
 data CaptainNode = CaptainNode !Node !Rank
+  deriving (Eq, Show)
 
 getCompressed :: Compressed -> UnionFind
 getCompressed uf = captainNode <$> uf

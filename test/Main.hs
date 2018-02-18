@@ -23,6 +23,8 @@ main = hspec $
       property propBoundedIndirections
     it "should bound the indirection depth at each level in the worst case" $
       property propWorstCaseBounded
+    it "should not change when joining two already-joined nodes" $
+      property propNoStructuralChange
 
 propMatchesGraphConnectivity :: EdgeList -> NPairs -> Property
 propMatchesGraphConnectivity (EdgeList el) (NPairs nprs) =
@@ -45,6 +47,13 @@ propBoundedIndirections (EdgeList el) =
   counterexample
     (show is ++ " not below " ++ show (take (length is) twoPows)) $
   and $ zipWith (<=) is twoPows
+
+propNoStructuralChange :: EdgeList -> Property
+propNoStructuralChange (EdgeList el) =
+  let uf = ufFrom el
+  in property $ do
+    pr <- arbitrary `suchThat` (`isConnectedIn` uf)
+    return $ structureOf uf === structureOf (pr `unionIn` uf)
 
 worstCase :: [(Int, Int)]
 worstCase = (2, 1) : concatMap nextWorstCase (iterate (2 *) 2)

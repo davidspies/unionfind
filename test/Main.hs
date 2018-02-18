@@ -21,6 +21,8 @@ main = hspec $
       property propMatchesGraphConnectivity
     it "should bound the indirection depth at each level" $
       property propBoundedIndirections
+    it "should bound the indirection depth at each level in the worst case" $
+      property propWorstCaseBounded
 
 propMatchesGraphConnectivity :: EdgeList -> NPairs -> Property
 propMatchesGraphConnectivity (EdgeList el) (NPairs nprs) =
@@ -43,6 +45,17 @@ propBoundedIndirections (EdgeList el) =
   counterexample
     (show is ++ " not below " ++ show (take (length is) twoPows)) $
   and $ zipWith (<=) is twoPows
+
+worstCase :: [(Int, Int)]
+worstCase = (2, 1) : concatMap nextWorstCase (iterate (2 *) 2)
+  where
+    nextWorstCase :: Int -> [(Int, Int)]
+    nextWorstCase n = shift n (take (n - 1) worstCase) ++ [(n + 1, 1)]
+    shift :: Int -> [(Int, Int)] -> [(Int, Int)]
+    shift k = map (\(x, y) -> (x + k, y + k))
+
+propWorstCaseBounded :: Int -> Property
+propWorstCaseBounded n = propBoundedIndirections (EdgeList (take n worstCase))
 
 newtype EdgeList = EdgeList [Edge]
   deriving (Show)

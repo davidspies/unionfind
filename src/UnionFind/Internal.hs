@@ -21,8 +21,8 @@ data Builder = Builder
   }
   deriving (Eq, Show)
 data EdgeCounter = EdgeCounter
-  { edgeCount  :: Integer
-  , nextExpand :: Integer
+  { edgeCount  :: !Integer
+  , nextExpand :: !Integer
   }
   deriving (Eq, Show)
 data UnionFind = UnionFind S.Compressed Builder

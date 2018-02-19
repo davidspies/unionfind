@@ -9,10 +9,10 @@ module UnionFind.Node
     , unNode
     ) where
 
-import           Data.IntMap.Lazy (IntMap)
+import Data.IntMap.Lazy (IntMap)
 import qualified Data.IntMap.Lazy as IntMap
-import           Data.List        (foldl')
-import           Prelude          hiding (lookup)
+import Data.List (foldl')
+import Prelude hiding (lookup)
 
 newtype Node = Node Int
   deriving (Eq, Show)

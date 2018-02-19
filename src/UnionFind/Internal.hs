@@ -8,8 +8,9 @@ module UnionFind.Internal
     , start
     ) where
 
-import           Data.Bifunctor   (first)
-import           UnionFind.Node   (Node)
+import Data.Bifunctor (first)
+
+import UnionFind.Node (Node)
 import qualified UnionFind.Single as S
 
 data Bit = Zero | One

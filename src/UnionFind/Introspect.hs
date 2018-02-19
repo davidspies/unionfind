@@ -6,9 +6,9 @@ module UnionFind.Introspect
     , structureOf
     ) where
 
-import           UnionFind.Internal
-import qualified UnionFind.Single   as S
-import qualified UnionFind.Wrapper  as W
+import UnionFind.Internal
+import qualified UnionFind.Single as S
+import qualified UnionFind.Wrapper as W
 
 indirectionDepth :: W.UnionFind -> [Int]
 indirectionDepth (W.UnionFind (UnionFind front Builder{..})) =

@@ -5,17 +5,17 @@ module Graph
     , isConnectedIn
     ) where
 
-import           Control.Monad.ST (ST, runST)
-import           Data.Bifunctor   (second)
-import qualified Data.DList       as DList
-import           Data.IntMap      (IntMap)
-import qualified Data.IntMap      as IntMap
-import           Data.IntSet      (IntSet)
-import qualified Data.IntSet      as IntSet
-import           Data.Maybe       (fromMaybe)
-import           Data.Monoid      ((<>))
-import           Data.STRef       (STRef, modifySTRef, newSTRef, readSTRef)
-import           Data.Tuple       (swap)
+import Control.Monad.ST (ST, runST)
+import Data.Bifunctor (second)
+import qualified Data.DList as DList
+import Data.IntMap (IntMap)
+import qualified Data.IntMap as IntMap
+import Data.IntSet (IntSet)
+import qualified Data.IntSet as IntSet
+import Data.Maybe (fromMaybe)
+import Data.Monoid ((<>))
+import Data.STRef (STRef, modifySTRef, newSTRef, readSTRef)
+import Data.Tuple (swap)
 
 newtype Graph = Graph (IntMap [Int])
   deriving (Show)

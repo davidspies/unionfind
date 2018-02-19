@@ -8,8 +8,8 @@ module UnionFind
     ) where
 
 import qualified UnionFind.Internal as UF
-import           UnionFind.Node
-import           UnionFind.Wrapper
+import UnionFind.Node
+import UnionFind.Wrapper
 
 find :: Int -> UnionFind -> Int
 find x = unNode . UF.find (Node x) . unuf

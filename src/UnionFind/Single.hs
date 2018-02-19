@@ -12,8 +12,9 @@ module UnionFind.Single
     , union
     ) where
 
-import           Data.Maybe     (fromJust, fromMaybe)
-import           UnionFind.Node (Node, NodeMap)
+import Data.Maybe (fromJust, fromMaybe)
+
+import UnionFind.Node (Node, NodeMap)
 import qualified UnionFind.Node as Node
 
 type Rank = Int

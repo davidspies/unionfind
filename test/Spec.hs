@@ -1,13 +1,14 @@
-import           Control.Monad        (replicateM)
-import           Control.Monad.State  (StateT, evalStateT)
-import qualified Control.Monad.State  as State
-import           Data.List            (foldl')
-import           Graph                (Edge)
+import Control.Monad (replicateM)
+import Control.Monad.State (StateT, evalStateT)
+import qualified Control.Monad.State as State
+import Data.List (foldl')
+import Test.Hspec
+import Test.QuickCheck
+
+import Graph (Edge)
 import qualified Graph
-import           Test.Hspec
-import           Test.QuickCheck
-import           UnionFind
-import           UnionFind.Introspect
+import UnionFind
+import UnionFind.Introspect
 
 ufFrom :: [Edge] -> UnionFind
 ufFrom = foldl' (flip union) start

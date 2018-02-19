@@ -1,5 +1,3 @@
-module Main where
-
 import           Control.Monad        (replicateM)
 import           Control.Monad.State  (StateT, evalStateT)
 import qualified Control.Monad.State  as State

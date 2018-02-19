@@ -220,9 +220,5 @@ newline: native
 #
 # No language extensions are enabled by default.
 language_extensions:
-  - FlexibleContexts
   - LambdaCase
   - NamedFieldPuns
-  - ScopedTypeVariables
-  - TupleSections
-  - ViewPatterns

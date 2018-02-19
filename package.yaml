@@ -4,7 +4,7 @@ github:              "davidspies/unionfind"
 license:             BSD3
 author:              "David Spies"
 maintainer:          "dnspies@gmail.com"
-copyright:           "2018"
+copyright:           "2018 David Spies"
 
 extra-source-files:
 - README.md
@@ -22,15 +22,11 @@ description:         Please see the README on Github at <https://github.com/davi
 dependencies:
 - base >= 4.7 && < 5
 - containers
-- dlist
 
 default-extensions:
 - DeriveFunctor
 - LambdaCase
 - NamedFieldPuns
-- ScopedTypeVariables
-- TupleSections
-- ViewPatterns
 
 library:
   source-dirs: src
@@ -43,7 +39,7 @@ library:
 
 tests:
   unionfind-test:
-    main:                Main.hs
+    main:                Spec.hs
     source-dirs:         test
     ghc-options:
     - -threaded
@@ -53,6 +49,7 @@ tests:
     - -Werror
     dependencies:
     - unionfind
+    - dlist
     - hspec
     - mtl
     - QuickCheck

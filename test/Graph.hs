@@ -2,7 +2,7 @@ module Graph
     ( Edge
     , Graph
     , fromEdges
-    , isConnected
+    , isConnectedIn
     ) where
 
 import           Control.Monad.ST (ST, runST)
@@ -30,8 +30,8 @@ fromEdges edges = Graph $ IntMap.map DList.toList $ IntMap.fromListWith (<>) $
 neighbors :: Graph -> Node -> [Node]
 neighbors (Graph m) n = fromMaybe [] $ IntMap.lookup n m
 
-isConnected :: Node -> Node -> Graph -> Bool
-isConnected x0 y g = runST (newSTRef IntSet.empty >>= go x0)
+isConnectedIn :: (Node, Node) -> Graph -> Bool
+isConnectedIn (x0, y) g = runST (newSTRef IntSet.empty >>= go x0)
   where
     go :: Node -> STRef s IntSet -> ST s Bool
     go x visited

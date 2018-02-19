@@ -30,7 +30,7 @@ propMatchesGraphConnectivity :: EdgeList -> NPairs -> Property
 propMatchesGraphConnectivity (EdgeList el) (NPairs nprs) =
   let g = Graph.fromEdges el
       uf = ufFrom el
-      joined = [Graph.isConnected x y g | (x, y) <- nprs]
+      joined = [(x, y) `Graph.isConnectedIn` g | (x, y) <- nprs]
   in
   cover (or joined) 50 "any joined" $
   cover (any not joined) 50 "any not joined" $
